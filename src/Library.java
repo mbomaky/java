@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Library {
-    private ArrayList<Book> books;
+    private final ArrayList<Book> books;
 
     public Library(List<Book> books) {
         this.books = new ArrayList<>(books);
@@ -25,7 +25,7 @@ class Library {
 
     public Book findBookByTitle(String title) {
         for (Book book : books) {
-            if (book.getTitle().toLowerCase().equals(title)) {
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 return book;
             }
         }
@@ -35,7 +35,7 @@ class Library {
 
     public void borrowBook(String title) {
         for (Book book : books) {
-            if (book.getTitle().toLowerCase().equals(title)) {
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 if (book.isAvailable()) {
                     book.setAvailable(false);
                     System.out.println("Book borrowed\n");
@@ -50,13 +50,14 @@ class Library {
 
     public void returnBook(String title) {
         for (Book book : books) {
-            if (book.getTitle().toLowerCase().equals(title)) {
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 if (!book.isAvailable()) {
                     book.setAvailable(true);
                     System.out.println("Book returned\n");
                     return;
                 }
                 System.out.println("This book is returned, try another book\n");
+                return;
             }
         }
         System.out.println("Wrong book name\n");
@@ -66,8 +67,10 @@ class Library {
         for (Book book : books) {
             if (book.isAvailable()) {
                 System.out.println(book);
+                return;
             }
         }
+        System.out.println("No available books right now.\n");
     }
 
     public void showAllBooks() {

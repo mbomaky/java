@@ -42,7 +42,6 @@ public class Main {
                 displayHelp();
             } else {
                 System.out.println("Invalid command. Try again.");
-                command = scanner.nextLine();
                 continue;
             }
 
@@ -64,9 +63,9 @@ public class Main {
                         list - show available books
                         all-list - show all books
                         add - add new book
-                        borrow [book tile] - borrow a book
-                        return [book tile] - return a book
-                        find [book tile] - find a book
+                        borrow [book title] - borrow a book
+                        return [book title] - return a book
+                        find [book title] - find a book
                         """
         );
     }
