@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Main {
   public static void main(String[] args) {
-    Transaction transaction1 = new Transaction("T001", 50000, "salary", LocalDate.of(2025, 1, 5));
+    Transaction transaction1 = new Transaction("T001", 50000, "flat", LocalDate.of(2025, 1, 5));
     Transaction transaction2 = new Transaction("T002", 1200, "product", LocalDate.of(2025, 1, 10));
     Transaction transaction3 = new Transaction("T003", 500, "transport", LocalDate.of(2025, 1, 15));
 
     List<Transaction> transactions = new ArrayList<>(List.of(transaction1, transaction2, transaction3));
 
     TransactionAnalyzer transactionAnalyzer = new TransactionAnalyzer();
-    System.out.println("All balance is " + transactionAnalyzer.calculateBalance(transactions));
+    System.out.println("All purchase is " + transactionAnalyzer.calculateBalance(transactions));
     System.out.println(
         "Max transaction is " +
             transactionAnalyzer.findLargestTransaction(transactions).id() +
